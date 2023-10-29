@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "automated-form-filler"
+version = "0.1.0"
+description = "This is an NER-based project meant to automatically fill forms by extracting relevant entities from free text"
+authors = ["Samuel Yawson"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+selenium = "^4.14.0"
+pypdf2 = "^3.0.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
