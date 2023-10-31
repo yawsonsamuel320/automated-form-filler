@@ -1,47 +1,32 @@
 from selenium import webdriver
-from selenium.webdriver.support.ui import Select
-import time
+from selenium.webdriver.common.keys import Keys
 
-# Load the website
-web = webdriver.Chrome()
-# Load Google Form
-# web.get('https://secure.sonnet.ca/#/quoting/property/about_you?lang=en')
+# Set the path to your WebDriver executable. You should download the appropriate WebDriver for your browser (e.g., Chrome, Firefox).
+driver = webdriver.Chrome()
 
-# Wating for the web to load before filling out
-time.sleep(5)
+# Open the Google Form URL
+form_url = 'https://forms.gle/vWVmojtWdfFvEj8V6'
+driver.get(form_url)
 
-# Inputs field
-#ADDRESS
-Address_input = "50 Laughton Ave M6N 2W9" # KEY
-Address_fill = web.find_element("xpath",'//*[@id="addressInput"]')
-Address_fill.send_keys(Address_input)
+# Fill out the form fields
+name = driver.find_elements("class", "ndJi5d snByac")  # Replace "entry.123456789" with the actual field name or ID for Name
+name.send_keys("Your Name")
 
-# FIRST NAME
-FirstName_input = "Kiel" # KEY
-FirstName_fill = web.find_element("xpath",'//*[@id="firstName"]')
-FirstName_fill.send_keys(FirstName_input)
+email = driver.find_element_by_name("entry.987654321")  # Replace "entry.987654321" with the actual field name or ID for Email
+email.send_keys("your@email.com")
 
-# LAST NAME
-LastName_input = "Dang" # KEY
-LastName_fill = web.find_element("xpath",'//*[@id="lastName"]')
-LastName_fill.send_keys(LastName_input)
+address = driver.find_element_by_name("entry.567890123")  # Replace "entry.567890123" with the actual field name or ID for Address
+address.send_keys("Your Address")
 
-# MONTH OF BIRTH
-dropdown_month = web.find_element("id","month-0Button")
-dropdown_month.click()
-option = web.find_element("xpath", "//span[contains(text(), 'January')]") #KEY
-option.click()
+phone = driver.find_element_by_name("entry.456789012")  # Replace "entry.456789012" with the actual field name or ID for Phone
+phone.send_keys("123-456-7890")
 
-# DATE OF BIRTH
-Date_input = "23" # KEY
-Date_fill = web.find_element("xpath",'//*[@id="date-0"]')
-Date_fill.send_keys(Date_input)
+comments = driver.find_element_by_name("entry.345678901")  # Replace "entry.345678901" with the actual field name or ID for Comments
+comments.send_keys("Your comments here")
 
-# YEAR OF BIRTH
-Year_input = "1994" # KEY
-Year_fill = web.find_element("xpath",'//*[@id="year-0"]')
-Year_fill.send_keys(Year_input)
+# Submit the form
+submit_button = driver.find_element_by_xpath("//span[text()='Submit']")  # Replace with the text on the submit button
+submit_button.click()
 
-# Prevent auto closing the web after application finishes the script.
-input("Press enter to close the browser")
-web.quit()
+# Close the browser
+driver.quit()
