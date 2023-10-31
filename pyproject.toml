@@ -11,7 +11,15 @@ selenium = "^4.14.0"
 pypdf2 = "^3.0.1"
 transformers = "^4.34.1"
 numpy = "^1.23.2"
+torch = {version = "^2.1.0+cpu", source = "pytorch"}
+torchvision = {version = "^0.16.0+cpu", source = "pytorch"}
+flair = "^0.13.0"
 
+
+[[tool.poetry.source]]
+name = "pytorch"
+url = "https://download.pytorch.org/whl/cpu"
+priority = "explicit"
 
 [build-system]
 requires = ["poetry-core"]
